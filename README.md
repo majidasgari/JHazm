@@ -12,6 +12,9 @@ A Java version of [Hazm](https://github.com/sobhe/hazm) (Python library for dige
 
 * You can download [pre-trained tagger and parser models](http://dl.dropboxusercontent.com/u/90405495/resources.zip) for persian and put these models in the `core/src/main/resources` folder of your project.
 
+# Dependencies
+You must install [this module](https://github.com/majidasgari/text_utils) with maven.
+
 # Installation and Using
 
 To make a single jar file run this codes:
