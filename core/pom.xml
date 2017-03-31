@@ -10,9 +10,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ac.ir.iust.nlp</groupId>
+   <groupId>ir.ac.iust.nlp</groupId>
     <artifactId>jhazm</artifactId>
-    <version>0.1</version>
+   <version>0.2</version>
     <name>JHazm</name>
     <packaging>jar</packaging>
     <description>JHazm: A Java version of Hazm (https://github.com/sobhe/hazm)</description>
@@ -31,7 +31,15 @@
         <yielder.version>2.1</yielder.version>
     </properties>
 
-    <build>
+   <distributionManagement>
+      <repository>
+         <id>central</id>
+         <name>38c51b48d203-releases</name>
+         <url>http://194.225.227.161:8083/artifactory/libs-release</url>
+      </repository>
+   </distributionManagement>
+
+   <build>
         <finalName>jhazm</finalName>
         <plugins>
             <plugin>
