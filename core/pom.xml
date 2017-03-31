@@ -56,7 +56,7 @@
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
                             <mainClass>
-                                iust.ac.ir.nlp.jhazm.Runner
+                               ir.ac.iust.nlp.jhazm.Runner
                             </mainClass>
                         </manifest>
                     </archive>
@@ -91,7 +91,7 @@
                     <finalName>jhazm</finalName>
                     <archive>
                         <manifest>
-                            <mainClass>iust.ac.ir.nlp.jhazm.Runner</mainClass>
+                           <mainClass>ir.ac.iust.nlp.jhazm.Runner</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
