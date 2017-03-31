@@ -2,7 +2,6 @@ package iust.ac.ir.nlp.jhazm;
 
 import edu.stanford.nlp.ling.TaggedWord;
 import ir.ac.iust.text.utils.FileHandler;
-import ir.ac.iust.text.utils.LoggerUtils;
 import ir.ac.iust.text.utils.StringBuilderWriter;
 import org.apache.commons.cli.*;
 import org.apache.commons.lang3.StringUtils;
@@ -16,10 +15,10 @@ import java.nio.file.Paths;
 import java.util.List;
 
 /**
- * Created by majid on 12/31/14.
+ * Created by Majid Asgari
  */
 public class Runner {
-    private static Logger logger = LoggerUtils.getLogger(Runner.class, "jhazm.log");
+    private static Logger logger = Logger.getLogger(Runner.class);
 
     public static void main(String[] args) throws IOException {
         // create the Options
@@ -45,8 +44,7 @@ public class Runner {
                 logger.error("wrong action.");
                 System.exit(1);
             }
-            if (action == null) showHelp(options);
-            String inputFile = null;
+          String inputFile = null;
             if (!line.hasOption("i") && !line.hasOption("t")) {
                 FileHandler.prepareFile("sample.txt");
                 inputFile = "sample.txt";
@@ -89,8 +87,8 @@ public class Runner {
         logger.info("working directory: " + System.getProperty("user.dir"));
         try {
             switch (action) {
-                case stemming:
-                    logger.trace("stemming, text = " + inputText);
+                case Stemming:
+                    logger.trace("Stemming, text = " + inputText);
                     Stemmer stemmer = new Stemmer();
                     for (String token : tokens) {
                         String stem = stemmer.Stem(token);
@@ -101,27 +99,27 @@ public class Runner {
                     if (verbose) logger.info(stem);
                     Files.write(outputPath, stem.getBytes("UTF-8"));
                     break;
-                case normalizing:
+                case Normalizing:
                     logger.trace("notmalizing, text = " + inputText);
                     if (verbose) logger.info(inputText);
                     Files.write(outputPath, inputText.getBytes("UTF-8"));
                     break;
-                case workTokenizing:
+                case WorkTokenizing:
                     logger.trace("tokenizing, text = " + inputText);
                     String tokenized = StringUtils.join(tokens, " ");
                     if (verbose) logger.info(tokenized);
                     assert tokenized != null;
                     Files.write(outputPath, tokenized.getBytes("UTF-8"));
                     break;
-                case sentenceTokenizing:
+                case SentenceTokenizing:
                     logger.trace("tokenizing, text = " + inputText);
                     tokenized = StringUtils.join(tokens, " ");
                     if (verbose) logger.info(tokenized);
                     assert tokenized != null;
                     Files.write(outputPath, tokenized.getBytes("UTF-8"));
                     break;
-                case lemmatize:
-                    logger.trace("lemmatize, text = " + inputText);
+                case Lemmatize:
+                    logger.trace("Lemmatize, text = " + inputText);
                     Lemmatizer lemmatizer = new Lemmatizer();
                     for (String token : tokens) {
                         String lemma = lemmatizer.lemmatize(token);
@@ -130,7 +128,7 @@ public class Runner {
                     }
                     Files.write(outputPath, builder.toString().getBytes("UTF-8"));
                     break;
-                case partOfSpeechTagging:
+                case PartOfSpeechTagging:
                     logger.trace("part of speech tagging, text = " + inputText);
                     POSTagger posTagger = new POSTagger();
                     List<TaggedWord> tagged = posTagger.batchTag(tokens);
@@ -142,7 +140,7 @@ public class Runner {
                     }
                     Files.write(outputPath, builder.toString().getBytes("UTF-8"));
                     break;
-                case dependencyParsing:
+                case DependencyParsing:
                     logger.trace("dependency parser, text = " + inputText);
                     DependencyParser dependencyParser = new DependencyParser();
                     posTagger = new POSTagger();

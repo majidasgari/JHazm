@@ -70,7 +70,7 @@
                         <id>install-external</id>
                         <phase>clean</phase>
                         <configuration>
-                            <file>${basedir}/local-libs/yielder-0.3.0.jar</file>
+                            <file>src/main/resources/yielder-0.3.0.jar</file>
                             <repositoryLayout>default</repositoryLayout>
                             <groupId>com.informancers.collections.yield</groupId>
                             <artifactId>yielder</artifactId>
@@ -133,11 +133,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>ir.ac.iust</groupId>
-            <artifactId>text-utils</artifactId>
-            <version>0.1</version>
-        </dependency>
-        <dependency>
             <groupId>org.antlr</groupId>
             <artifactId>antlr4-runtime</artifactId>
             <version>4.5</version>
@@ -150,7 +145,9 @@
         <dependency>
             <groupId>com.informancers.collections.yield</groupId>
             <artifactId>yielder</artifactId>
-            <version>2.1</version>
+            <version>0.3.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/yielder-0.3.0.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -201,6 +198,20 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>${log4j.version}</version>
+        </dependency>
+
+        <!-- Logging with SLF4J & LogBack -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.21</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.1.7</version>
+            <scope>runtime</scope>
         </dependency>
     </dependencies>
 </project>
