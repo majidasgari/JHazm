@@ -1,6 +1,11 @@
 JHazm
 =====
 
+[![Build and Test](https://github.com/majidasgari/JHazm/actions/workflows/build.yml/badge.svg)](https://github.com/majidasgari/JHazm/actions/workflows/build.yml)
+[![Java](https://img.shields.io/badge/Java-21-blue.svg)](https://www.oracle.com/java/)
+[![Maven Central](https://img.shields.io/badge/Maven-v1.0.0-orange.svg)](https://maven.apache.org/)
+[![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](LICENSE)
+
 A Java version of [Hazm](https://github.com/sobhe/hazm) (Python library for digesting Persian text)
 
 + Text cleaning
@@ -15,38 +20,79 @@ A Java version of [Hazm](https://github.com/sobhe/hazm) (Python library for dige
 # Dependencies
 You must install [this module](https://github.com/majidasgari/text_utils) with maven.
 
-# Installation and Using
+# Installation
 
-To make a single jar file run this codes:
+## Using as Maven Dependency
 
-```bash
-mvn clean compile assembly:single
+Add this dependency to your `pom.xml`:
+
+```xml
+<dependency>
+    <groupId>ir.ac.iust.nlp</groupId>
+    <artifactId>jhazm</artifactId>
+    <version>1.0.0</version>
+</dependency>
 ```
+
+**Note:** If the artifact is not available in Maven Central, you can use JitPack:
+
+1. Add JitPack repository to your `pom.xml`:
+```xml
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
+```
+
+2. Add the dependency:
+```xml
+<dependency>
+    <groupId>com.github.majidasgari</groupId>
+    <artifactId>JHazm</artifactId>
+    <version>master-SNAPSHOT</version>
+</dependency>
+```
+
+## Building from Source
+
 For using this project as library in maven just use:
 ```bash
 mvn clean install
 ```
 
+## Running the JAR
+
+To make a single jar file run this command:
+
+```bash
+mvn clean compile assembly:single
+```
+
 To run and see the help:
 ```bash
-java -jar jhazm-jar-with-dependencies.jar
+java -jar target/jhazm-jar-with-dependencies.jar
 ```
 
 For example to do POS Tag on bundled sample file use:
 ```bash
-java -jar jhazm-jar-with-dependencies.jar -a partOfSpeechTagging -o test.txt
+java -jar target/jhazm-jar-with-dependencies.jar -a partOfSpeechTagging -o test.txt
 ```
 
 Or to run on any other file:
 ```bash
-java -jar jhazm-jar-with-dependencies.jar -a partOfSpeechTagging -o test.txt -i input.txt
+java -jar target/jhazm-jar-with-dependencies.jar -a partOfSpeechTagging -o test.txt -i input.txt
 ```
 
 Or on some piece of text:
 ```bash
-java -jar jhazm-jar-with-dependencies.jar -a partOfSpeechTagging -o test.txt -t "سلام من خوب هستم!"
+java -jar target/jhazm-jar-with-dependencies.jar -a partOfSpeechTagging -o test.txt -t "سلام من خوب هستم!"
 ```
-Good Luck!
 
-to make a single all-in-one jar file execute:
-mvn assembly:single
+# Requirements
+
+- Java 21 or higher
+- Maven 3.6+
+
+Good Luck!
