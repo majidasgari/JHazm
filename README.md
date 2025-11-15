@@ -47,3 +47,6 @@ Or on some piece of text:
 java -jar jhazm-jar-with-dependencies.jar -a partOfSpeechTagging -o test.txt -t "سلام من خوب هستم!"
 ```
 Good Luck!
+
+to make a single all-in-one jar file execute:
+mvn assembly:single
