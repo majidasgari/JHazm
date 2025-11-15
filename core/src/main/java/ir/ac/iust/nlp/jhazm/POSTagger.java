@@ -1,6 +1,5 @@
 package ir.ac.iust.nlp.jhazm;
 
-import edu.stanford.nlp.ling.Sentence;
 import edu.stanford.nlp.ling.TaggedWord;
 import edu.stanford.nlp.tagger.maxent.MaxentTagger;
 import ir.ac.iust.nlp.jhazm.utils.FileHandler;
@@ -27,7 +26,8 @@ public class POSTagger {
     }
 
     public static POSTagger i() throws IOException {
-        if (instance != null) return instance;
+        if (instance != null)
+            return instance;
         instance = new POSTagger();
         return instance;
     }
@@ -43,15 +43,16 @@ public class POSTagger {
     }
 
     public List<TaggedWord> batchTag(List<String> sentence) {
-        String[] sen = new String[sentence.size()];
-        for (int i = 0; i < sentence.size(); i++)
-           sen[i] = sentence.get(i).replace(" ", "_");
-        List newSent = Sentence.toWordList(sen);
+        List<edu.stanford.nlp.ling.HasWord> newSent = new ArrayList<>();
+        for (int i = 0; i < sentence.size(); i++) {
+            String word = sentence.get(i).replace(" ", "_");
+            newSent.add(new edu.stanford.nlp.ling.Word(word));
+        }
         List taggedSentence = this.tagger.tagSentence(newSent);
 
         List<TaggedWord> taggedSen = new ArrayList<>();
         for (int i = 0; i < taggedSentence.size(); i++) {
-            TaggedWord tw = (TaggedWord)taggedSentence.get(i);
+            TaggedWord tw = (TaggedWord) taggedSentence.get(i);
             tw.setWord(sentence.get(i));
             taggedSen.add(tw);
         }

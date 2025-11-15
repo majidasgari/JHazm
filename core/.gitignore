@@ -1,3 +1,4 @@
 src/test/resources/data/*.dat
 src/test/resources/resources/langModel.mco
 src/test/resources/resources/persian.tagger
+target
